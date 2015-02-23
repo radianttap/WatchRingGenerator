@@ -21,10 +21,10 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcN-SH-DpK">
                                 <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" image="38mm.png" translatesAutoresizingMaskIntoConstraints="NO" id="W8i-rG-Mi4">
-                                        <rect key="frame" x="30" y="-41" width="276" height="476"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" image="bezel38mm" translatesAutoresizingMaskIntoConstraints="NO" id="W8i-rG-Mi4">
+                                        <rect key="frame" x="50" y="50" width="236" height="270"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="38mm-paged" translatesAutoresizingMaskIntoConstraints="NO" id="d1P-ba-9eP">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paged38mm" translatesAutoresizingMaskIntoConstraints="NO" id="d1P-ba-9eP">
                                         <rect key="frame" x="100" y="100" width="136" height="170"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgP-mu-jWi" userLabel="watch">
@@ -58,9 +58,9 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1l-Ot-5qo">
-                                        <rect key="frame" x="93" y="390" width="55" height="26"/>
+                                        <rect key="frame" x="73" y="330" width="75" height="38"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <inset key="contentEdgeInsets" minX="6" minY="4" maxX="6" maxY="4"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="10" maxX="16" maxY="10"/>
                                         <state key="normal" title="38mm">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,9 +70,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbp-aI-cCL">
-                                        <rect key="frame" x="188" y="390" width="55" height="26"/>
+                                        <rect key="frame" x="188" y="330" width="75" height="38"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <inset key="contentEdgeInsets" minX="6" minY="4" maxX="6" maxY="4"/>
+                                        <inset key="contentEdgeInsets" minX="16" minY="10" maxX="16" maxY="10"/>
                                         <state key="normal" title="42mm">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,7 +82,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-em-Z8d" userLabel="controls">
-                                        <rect key="frame" x="436" y="20" width="284" height="408"/>
+                                        <rect key="frame" x="356" y="20" width="284" height="360"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="63S-EV-qEJ" userLabel="wrap">
                                                 <rect key="frame" x="0.0" y="0.0" width="284" height="146"/>
@@ -372,7 +372,7 @@
                                     <constraint firstItem="d1P-ba-9eP" firstAttribute="centerX" secondItem="ZgP-mu-jWi" secondAttribute="centerX" id="0b4-l3-P9o"/>
                                     <constraint firstItem="Gbp-aI-cCL" firstAttribute="centerY" secondItem="I1l-Ot-5qo" secondAttribute="centerY" id="4iP-kw-2kz"/>
                                     <constraint firstAttribute="bottom" secondItem="jXf-em-Z8d" secondAttribute="bottom" constant="8" id="Bqx-u4-YoX"/>
-                                    <constraint firstItem="W8i-rG-Mi4" firstAttribute="centerY" secondItem="ZgP-mu-jWi" secondAttribute="centerY" constant="12" id="DwP-iO-8h5"/>
+                                    <constraint firstItem="W8i-rG-Mi4" firstAttribute="centerY" secondItem="ZgP-mu-jWi" secondAttribute="centerY" id="DwP-iO-8h5"/>
                                     <constraint firstItem="d1P-ba-9eP" firstAttribute="height" secondItem="ZgP-mu-jWi" secondAttribute="height" id="GCa-Q9-Uzv"/>
                                     <constraint firstAttribute="trailing" secondItem="jXf-em-Z8d" secondAttribute="trailing" constant="20" id="HrQ-qH-hym"/>
                                     <constraint firstItem="ZgP-mu-jWi" firstAttribute="top" secondItem="hcN-SH-DpK" secondAttribute="top" constant="100" id="JwL-uy-DQw"/>
@@ -380,9 +380,9 @@
                                     <constraint firstItem="ZgP-mu-jWi" firstAttribute="leading" secondItem="hcN-SH-DpK" secondAttribute="leading" constant="100" id="Mui-vW-8MB"/>
                                     <constraint firstItem="d1P-ba-9eP" firstAttribute="centerY" secondItem="ZgP-mu-jWi" secondAttribute="centerY" id="Xrk-bO-r6s"/>
                                     <constraint firstAttribute="bottom" secondItem="I1l-Ot-5qo" secondAttribute="bottom" constant="20" id="chY-tC-zED"/>
-                                    <constraint firstItem="jXf-em-Z8d" firstAttribute="leading" secondItem="ZgP-mu-jWi" secondAttribute="trailing" constant="200" id="gbF-J4-kbr"/>
+                                    <constraint firstItem="jXf-em-Z8d" firstAttribute="leading" secondItem="ZgP-mu-jWi" secondAttribute="trailing" constant="120" id="gbF-J4-kbr"/>
                                     <constraint firstItem="d1P-ba-9eP" firstAttribute="width" secondItem="ZgP-mu-jWi" secondAttribute="width" id="kQv-OG-AkL"/>
-                                    <constraint firstItem="I1l-Ot-5qo" firstAttribute="top" secondItem="ZgP-mu-jWi" secondAttribute="bottom" constant="120" id="lGq-gf-bQr"/>
+                                    <constraint firstItem="I1l-Ot-5qo" firstAttribute="top" secondItem="ZgP-mu-jWi" secondAttribute="bottom" constant="60" id="lGq-gf-bQr"/>
                                     <constraint firstItem="I1l-Ot-5qo" firstAttribute="trailing" secondItem="ZgP-mu-jWi" secondAttribute="centerX" constant="-20" id="mp2-6L-8Ns"/>
                                     <constraint firstItem="Gbp-aI-cCL" firstAttribute="leading" secondItem="ZgP-mu-jWi" secondAttribute="centerX" constant="20" id="tjl-Nb-y4R"/>
                                 </constraints>
@@ -433,7 +433,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="38mm-paged" width="552" height="950"/>
-        <image name="38mm.png" width="276" height="475"/>
+        <image name="bezel38mm" width="236" height="270"/>
+        <image name="paged38mm" width="136" height="170"/>
     </resources>
 </document>

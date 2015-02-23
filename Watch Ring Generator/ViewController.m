@@ -125,22 +125,20 @@
 
 	self.watchScreenWidthConstraint.constant = 136;
 	self.watchScreenHeightConstraint.constant = 170;
-	self.watchFaceYOffsetConstraint.constant = 12;
 	[self.view layoutIfNeeded];
 
-	self.watchFace.image = [UIImage imageNamed:@"38mm"];
-	self.watchApp.image = [UIImage imageNamed:@"38mm-paged"];
+	self.watchFace.image = [UIImage imageNamed:@"bezel38mm"];
+	self.watchApp.image = [UIImage imageNamed:@"paged38mm"];
 }
 
 - (IBAction)switchTo42mm:(id)sender {
 	
 	self.watchScreenWidthConstraint.constant = 156;
 	self.watchScreenHeightConstraint.constant = 195;
-	self.watchFaceYOffsetConstraint.constant = 0;
 	[self.view layoutIfNeeded];
 
-	self.watchFace.image = [UIImage imageNamed:@"42mm"];
-	self.watchApp.image = [UIImage imageNamed:@"42mm-paged"];
+	self.watchFace.image = [UIImage imageNamed:@"bezel42mm"];
+	self.watchApp.image = [UIImage imageNamed:@"paged42mm"];
 }
 
 
