@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *mm38button;
 @property (weak, nonatomic) IBOutlet UIButton *mm42button;
 @property (weak, nonatomic) IBOutlet UIImageView *watchFace;
+@property (weak, nonatomic) IBOutlet UIImageView *watchApp;
 @property (weak, nonatomic) IBOutlet UIView *watchScreen;
 
 @property (weak, nonatomic) IBOutlet M13ProgressViewRing *innerRing;
@@ -36,6 +37,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *watchScreenWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *watchScreenHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *watchFaceYOffsetConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *outerRingWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerRingWidthConstraint;
@@ -102,20 +104,24 @@
 
 - (IBAction)switchTo38mm:(id)sender {
 
-	self.watchScreenWidthConstraint.constant = 272;
-	self.watchScreenWidthConstraint.constant = 340;
+	self.watchScreenWidthConstraint.constant = 136;
+	self.watchScreenHeightConstraint.constant = 170;
+	self.watchFaceYOffsetConstraint.constant = 12;
 	[self.view layoutIfNeeded];
 
-	self.watchFace.image = [UIImage imageNamed:@"38mm.png"];
+	self.watchFace.image = [UIImage imageNamed:@"38mm"];
+	self.watchApp.image = [UIImage imageNamed:@"38mm-paged"];
 }
 
 - (IBAction)switchTo42mm:(id)sender {
 	
-	self.watchScreenWidthConstraint.constant = 312;
-	self.watchScreenWidthConstraint.constant = 390;
+	self.watchScreenWidthConstraint.constant = 156;
+	self.watchScreenHeightConstraint.constant = 195;
+	self.watchFaceYOffsetConstraint.constant = 0;
 	[self.view layoutIfNeeded];
 
-	self.watchFace.image = [UIImage imageNamed:@"42mm.png"];
+	self.watchFace.image = [UIImage imageNamed:@"42mm"];
+	self.watchApp.image = [UIImage imageNamed:@"42mm-paged"];
 }
 
 

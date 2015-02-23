@@ -13,8 +13,6 @@
 		D007DC141A9B4901004E5D50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D007DC121A9B4901004E5D50 /* Main.storyboard */; };
 		D007DC161A9B4901004E5D50 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007DC151A9B4901004E5D50 /* Images.xcassets */; };
 		D007DC191A9B4901004E5D50 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D007DC171A9B4901004E5D50 /* LaunchScreen.xib */; };
-		D007DC311A9B57B4004E5D50 /* 38mm.png in Resources */ = {isa = PBXBuildFile; fileRef = D007DC2F1A9B57B4004E5D50 /* 38mm.png */; };
-		D007DC321A9B57B4004E5D50 /* 42mm.png in Resources */ = {isa = PBXBuildFile; fileRef = D007DC301A9B57B4004E5D50 /* 42mm.png */; };
 		D007DC521A9B59A7004E5D50 /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC361A9B59A7004E5D50 /* M13ProgressView.m */; };
 		D007DC531A9B59A7004E5D50 /* M13ProgressViewBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC381A9B59A7004E5D50 /* M13ProgressViewBar.m */; };
 		D007DC541A9B59A7004E5D50 /* M13ProgressViewBorderedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC3A1A9B59A7004E5D50 /* M13ProgressViewBorderedBar.m */; };
@@ -29,6 +27,10 @@
 		D007DC5D1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC4C1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m */; };
 		D007DC5E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC4E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m */; };
 		D007DC5F1A9B59A7004E5D50 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */; };
+		D008C6B21A9B954D00E7945E /* 38mm-paged@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D008C6AE1A9B954D00E7945E /* 38mm-paged@2x.png */; };
+		D008C6B31A9B954D00E7945E /* 38mm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D008C6AF1A9B954D00E7945E /* 38mm@2x.png */; };
+		D008C6B41A9B954D00E7945E /* 42mm-paged@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D008C6B01A9B954D00E7945E /* 42mm-paged@2x.png */; };
+		D008C6B51A9B954D00E7945E /* 42mm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D008C6B11A9B954D00E7945E /* 42mm@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +44,6 @@
 		D007DC131A9B4901004E5D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D007DC151A9B4901004E5D50 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D007DC181A9B4901004E5D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D007DC2F1A9B57B4004E5D50 /* 38mm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 38mm.png; sourceTree = "<group>"; };
-		D007DC301A9B57B4004E5D50 /* 42mm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 42mm.png; sourceTree = "<group>"; };
 		D007DC351A9B59A7004E5D50 /* M13ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressView.h; sourceTree = "<group>"; };
 		D007DC361A9B59A7004E5D50 /* M13ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressView.m; sourceTree = "<group>"; };
 		D007DC371A9B59A7004E5D50 /* M13ProgressViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewBar.h; sourceTree = "<group>"; };
@@ -72,6 +72,10 @@
 		D007DC4E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewStripedBar.m; sourceTree = "<group>"; };
 		D007DC501A9B59A7004E5D50 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
 		D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
+		D008C6AE1A9B954D00E7945E /* 38mm-paged@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38mm-paged@2x.png"; sourceTree = "<group>"; };
+		D008C6AF1A9B954D00E7945E /* 38mm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38mm@2x.png"; sourceTree = "<group>"; };
+		D008C6B01A9B954D00E7945E /* 42mm-paged@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42mm-paged@2x.png"; sourceTree = "<group>"; };
+		D008C6B11A9B954D00E7945E /* 42mm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42mm@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +134,10 @@
 		D007DC2E1A9B57B4004E5D50 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				D007DC2F1A9B57B4004E5D50 /* 38mm.png */,
-				D007DC301A9B57B4004E5D50 /* 42mm.png */,
+				D008C6AE1A9B954D00E7945E /* 38mm-paged@2x.png */,
+				D008C6AF1A9B954D00E7945E /* 38mm@2x.png */,
+				D008C6B01A9B954D00E7945E /* 42mm-paged@2x.png */,
+				D008C6B11A9B954D00E7945E /* 42mm@2x.png */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -244,10 +250,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D007DC311A9B57B4004E5D50 /* 38mm.png in Resources */,
 				D007DC141A9B4901004E5D50 /* Main.storyboard in Resources */,
-				D007DC321A9B57B4004E5D50 /* 42mm.png in Resources */,
+				D008C6B21A9B954D00E7945E /* 38mm-paged@2x.png in Resources */,
+				D008C6B31A9B954D00E7945E /* 38mm@2x.png in Resources */,
 				D007DC191A9B4901004E5D50 /* LaunchScreen.xib in Resources */,
+				D008C6B51A9B954D00E7945E /* 42mm@2x.png in Resources */,
+				D008C6B41A9B954D00E7945E /* 42mm-paged@2x.png in Resources */,
 				D007DC161A9B4901004E5D50 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +426,7 @@
 				D007DC2A1A9B4901004E5D50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
