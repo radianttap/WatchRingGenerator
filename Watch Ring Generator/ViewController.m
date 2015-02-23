@@ -9,6 +9,7 @@
 #import "ViewController.h"
 //#import "M13ProgressViewSegmentedRing.h"
 #import "M13ProgressViewRing.h"
+#import "UIColor-Expanded.h"
 @import QuartzCore;
 @import CoreGraphics;
 
@@ -28,12 +29,16 @@
 @property (weak, nonatomic) IBOutlet UITextField *outerRingSize;
 @property (weak, nonatomic) IBOutlet UITextField *outerRingWidth;
 @property (weak, nonatomic) IBOutlet UITextField *outerRingSegments;
+@property (weak, nonatomic) IBOutlet UITextField *outerBackground;
+@property (weak, nonatomic) IBOutlet UITextField *outerForeground;
 
 @property (weak, nonatomic) IBOutlet UIButton *innerBackgroundButton;
 @property (weak, nonatomic) IBOutlet UIButton *innerForegroundButton;
 @property (weak, nonatomic) IBOutlet UITextField *innerRingSize;
 @property (weak, nonatomic) IBOutlet UITextField *innerRingWidth;
 @property (weak, nonatomic) IBOutlet UITextField *innerRingSegments;
+@property (weak, nonatomic) IBOutlet UITextField *innerBackground;
+@property (weak, nonatomic) IBOutlet UITextField *innerForeground;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *watchScreenWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *watchScreenHeightConstraint;
@@ -88,6 +93,11 @@
 
 - (void)setupColors {
 	
+	self.outerBackgroundButton.backgroundColor = [UIColor colorWithHexString:self.outerBackground.text];
+	self.outerForegroundButton.backgroundColor = [UIColor colorWithHexString:self.outerForeground.text];
+	self.innerBackgroundButton.backgroundColor = [UIColor colorWithHexString:self.innerBackground.text];
+	self.innerForegroundButton.backgroundColor = [UIColor colorWithHexString:self.innerForeground.text];
+	
 	self.outerRing.primaryColor = self.outerForegroundButton.backgroundColor;
 	self.outerRing.secondaryColor = self.outerBackgroundButton.backgroundColor;
 	self.innerRing.primaryColor = self.innerForegroundButton.backgroundColor;
@@ -97,6 +107,15 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	
+	if ([textField isEqual:self.outerForeground] ||
+		[textField isEqual:self.outerBackground] ||
+		[textField isEqual:self.outerForeground] ||
+		[textField isEqual:self.outerBackground]) {
+		
+		[self setupColors];
+		return YES;
+	}
 	
 	[self setupSizes];
 	return YES;
