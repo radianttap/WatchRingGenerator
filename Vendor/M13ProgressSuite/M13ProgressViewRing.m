@@ -108,7 +108,7 @@
     _progressLayer = [CAShapeLayer layer];
     _progressLayer.strokeColor = self.primaryColor.CGColor;
     _progressLayer.fillColor = nil;
-    _progressLayer.lineCap = kCALineCapButt;
+    _progressLayer.lineCap = kCALineCapRound;
     _progressLayer.lineWidth = _progressRingWidth;
     [self.layer addSublayer:_progressLayer];
     

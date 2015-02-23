@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "M13ProgressViewSegmentedRing.h"
+//#import "M13ProgressViewSegmentedRing.h"
+#import "M13ProgressViewRing.h"
 @import QuartzCore;
 @import CoreGraphics;
 
@@ -18,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *watchFace;
 @property (weak, nonatomic) IBOutlet UIView *watchScreen;
 
-@property (weak, nonatomic) IBOutlet M13ProgressViewSegmentedRing *innerRing;
-@property (weak, nonatomic) IBOutlet M13ProgressViewSegmentedRing *outerRing;
+@property (weak, nonatomic) IBOutlet M13ProgressViewRing *innerRing;
+@property (weak, nonatomic) IBOutlet M13ProgressViewRing *outerRing;
 
 @property (weak, nonatomic) IBOutlet UIButton *outerBackgroundButton;
 @property (weak, nonatomic) IBOutlet UIButton *outerForegroundButton;
@@ -46,30 +47,41 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.outerRing.numberOfSegments = 9;
-	self.outerRing.progressRingWidth = 3.0;
 	self.outerRing.showPercentage = NO;
-
-	self.innerRing.numberOfSegments = 27;
-	self.innerRing.progressRingWidth = 3.0;
 	self.innerRing.showPercentage = NO;
-	
-	self.outerRing.segmentSeparationAngle = self.innerRing.segmentSeparationAngle;
+
 	[self setupColors];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	[self setGroupProgress:3.0/9.0 sessionProgress:8.0/27.0];
+	[self setupSizes];
+	[self setGroupProgress:.3 sessionProgress:.7];
 }
 
 - (void)setGroupProgress:(CGFloat)groupProgress sessionProgress:(CGFloat)sessionProgress {
 	
 	[self.outerRing setProgress:groupProgress animated:YES];
 	[self.innerRing setProgress:sessionProgress animated:YES];
+}
+
+- (void)setupSizes {
 	
-//	[self.view layoutIfNeeded];
+	self.outerRingWidthConstraint.constant = [self.outerRingSize.text doubleValue];
+	self.innerRingWidthConstraint.constant = [self.innerRingSize.text doubleValue];
+	[self.watchScreen layoutIfNeeded];
+
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.outerRing.backgroundRingWidth = [self.outerRingWidth.text doubleValue];
+		self.outerRing.progressRingWidth = [self.outerRingWidth.text doubleValue];
+		
+		self.innerRing.backgroundRingWidth = [self.innerRingWidth.text doubleValue];
+		self.innerRing.progressRingWidth = [self.innerRingWidth.text doubleValue];
+		
+		[self.outerRing setNeedsDisplay];
+		[self.innerRing setNeedsDisplay];
+	});
 }
 
 - (void)setupColors {
@@ -84,32 +96,28 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	
-	if ([textField isEqual:self.outerRingSize]) {
-		self.outerRingWidthConstraint.constant = [textField.text doubleValue];
-		
-	} else if ([textField isEqual:self.outerRingWidth]) {
-		self.outerRing.progressRingWidth = [textField.text doubleValue];
-
-	} else if ([textField isEqual:self.outerRingSegments]) {
-		self.outerRing.numberOfSegments = [textField.text integerValue];
-		
-	} else if ([textField isEqual:self.innerRingSize]) {
-		self.innerRingWidthConstraint.constant = [textField.text doubleValue];
-
-	} else if ([textField isEqual:self.innerRingWidth]) {
-		self.innerRing.progressRingWidth = [textField.text doubleValue];
-		
-	} else if ([textField isEqual:self.innerRingSegments]) {
-		self.innerRing.numberOfSegments = [textField.text integerValue];
-		
-	}
-	
-	self.outerRing.segmentSeparationAngle = self.innerRing.segmentSeparationAngle;
-	[self.outerRing setNeedsDisplay];
-	[self.innerRing setNeedsDisplay];
-	[self.watchScreen layoutIfNeeded];
-	
+	[self setupSizes];
 	return YES;
 }
+
+- (IBAction)switchTo38mm:(id)sender {
+
+	self.watchScreenWidthConstraint.constant = 272;
+	self.watchScreenWidthConstraint.constant = 340;
+	[self.view layoutIfNeeded];
+
+	self.watchFace.image = [UIImage imageNamed:@"38mm.png"];
+}
+
+- (IBAction)switchTo42mm:(id)sender {
+	
+	self.watchScreenWidthConstraint.constant = 312;
+	self.watchScreenWidthConstraint.constant = 390;
+	[self.view layoutIfNeeded];
+
+	self.watchFace.image = [UIImage imageNamed:@"42mm.png"];
+}
+
+
 
 @end
