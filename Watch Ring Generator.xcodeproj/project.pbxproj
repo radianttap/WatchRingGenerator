@@ -13,18 +13,23 @@
 		D007DC141A9B4901004E5D50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D007DC121A9B4901004E5D50 /* Main.storyboard */; };
 		D007DC161A9B4901004E5D50 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D007DC151A9B4901004E5D50 /* Images.xcassets */; };
 		D007DC191A9B4901004E5D50 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D007DC171A9B4901004E5D50 /* LaunchScreen.xib */; };
-		D007DC251A9B4901004E5D50 /* Watch_Ring_GeneratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC241A9B4901004E5D50 /* Watch_Ring_GeneratorTests.m */; };
+		D007DC311A9B57B4004E5D50 /* 38mm.png in Resources */ = {isa = PBXBuildFile; fileRef = D007DC2F1A9B57B4004E5D50 /* 38mm.png */; };
+		D007DC321A9B57B4004E5D50 /* 42mm.png in Resources */ = {isa = PBXBuildFile; fileRef = D007DC301A9B57B4004E5D50 /* 42mm.png */; };
+		D007DC521A9B59A7004E5D50 /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC361A9B59A7004E5D50 /* M13ProgressView.m */; };
+		D007DC531A9B59A7004E5D50 /* M13ProgressViewBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC381A9B59A7004E5D50 /* M13ProgressViewBar.m */; };
+		D007DC541A9B59A7004E5D50 /* M13ProgressViewBorderedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC3A1A9B59A7004E5D50 /* M13ProgressViewBorderedBar.m */; };
+		D007DC551A9B59A7004E5D50 /* M13ProgressViewFilteredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC3C1A9B59A7004E5D50 /* M13ProgressViewFilteredImage.m */; };
+		D007DC561A9B59A7004E5D50 /* M13ProgressViewImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC3E1A9B59A7004E5D50 /* M13ProgressViewImage.m */; };
+		D007DC571A9B59A7004E5D50 /* M13ProgressViewMetro.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC401A9B59A7004E5D50 /* M13ProgressViewMetro.m */; };
+		D007DC581A9B59A7004E5D50 /* M13ProgressViewMetroDotPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC421A9B59A7004E5D50 /* M13ProgressViewMetroDotPolygon.m */; };
+		D007DC591A9B59A7004E5D50 /* M13ProgressViewPie.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC441A9B59A7004E5D50 /* M13ProgressViewPie.m */; };
+		D007DC5A1A9B59A7004E5D50 /* M13ProgressViewRadiative.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC461A9B59A7004E5D50 /* M13ProgressViewRadiative.m */; };
+		D007DC5B1A9B59A7004E5D50 /* M13ProgressViewRing.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC481A9B59A7004E5D50 /* M13ProgressViewRing.m */; };
+		D007DC5C1A9B59A7004E5D50 /* M13ProgressViewSegmentedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC4A1A9B59A7004E5D50 /* M13ProgressViewSegmentedBar.m */; };
+		D007DC5D1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC4C1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m */; };
+		D007DC5E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC4E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m */; };
+		D007DC5F1A9B59A7004E5D50 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D007DC1F1A9B4901004E5D50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D007DBFD1A9B4901004E5D50 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D007DC041A9B4901004E5D50;
-			remoteInfo = "Watch Ring Generator";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D007DC051A9B4901004E5D50 /* Watch Ring Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Ring Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,20 +42,40 @@
 		D007DC131A9B4901004E5D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D007DC151A9B4901004E5D50 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D007DC181A9B4901004E5D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D007DC1E1A9B4901004E5D50 /* Watch Ring GeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Ring GeneratorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D007DC231A9B4901004E5D50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D007DC241A9B4901004E5D50 /* Watch_Ring_GeneratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Watch_Ring_GeneratorTests.m; sourceTree = "<group>"; };
+		D007DC2F1A9B57B4004E5D50 /* 38mm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 38mm.png; sourceTree = "<group>"; };
+		D007DC301A9B57B4004E5D50 /* 42mm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 42mm.png; sourceTree = "<group>"; };
+		D007DC351A9B59A7004E5D50 /* M13ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressView.h; sourceTree = "<group>"; };
+		D007DC361A9B59A7004E5D50 /* M13ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressView.m; sourceTree = "<group>"; };
+		D007DC371A9B59A7004E5D50 /* M13ProgressViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewBar.h; sourceTree = "<group>"; };
+		D007DC381A9B59A7004E5D50 /* M13ProgressViewBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewBar.m; sourceTree = "<group>"; };
+		D007DC391A9B59A7004E5D50 /* M13ProgressViewBorderedBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewBorderedBar.h; sourceTree = "<group>"; };
+		D007DC3A1A9B59A7004E5D50 /* M13ProgressViewBorderedBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewBorderedBar.m; sourceTree = "<group>"; };
+		D007DC3B1A9B59A7004E5D50 /* M13ProgressViewFilteredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewFilteredImage.h; sourceTree = "<group>"; };
+		D007DC3C1A9B59A7004E5D50 /* M13ProgressViewFilteredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewFilteredImage.m; sourceTree = "<group>"; };
+		D007DC3D1A9B59A7004E5D50 /* M13ProgressViewImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewImage.h; sourceTree = "<group>"; };
+		D007DC3E1A9B59A7004E5D50 /* M13ProgressViewImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewImage.m; sourceTree = "<group>"; };
+		D007DC3F1A9B59A7004E5D50 /* M13ProgressViewMetro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewMetro.h; sourceTree = "<group>"; };
+		D007DC401A9B59A7004E5D50 /* M13ProgressViewMetro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewMetro.m; sourceTree = "<group>"; };
+		D007DC411A9B59A7004E5D50 /* M13ProgressViewMetroDotPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewMetroDotPolygon.h; sourceTree = "<group>"; };
+		D007DC421A9B59A7004E5D50 /* M13ProgressViewMetroDotPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewMetroDotPolygon.m; sourceTree = "<group>"; };
+		D007DC431A9B59A7004E5D50 /* M13ProgressViewPie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewPie.h; sourceTree = "<group>"; };
+		D007DC441A9B59A7004E5D50 /* M13ProgressViewPie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewPie.m; sourceTree = "<group>"; };
+		D007DC451A9B59A7004E5D50 /* M13ProgressViewRadiative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewRadiative.h; sourceTree = "<group>"; };
+		D007DC461A9B59A7004E5D50 /* M13ProgressViewRadiative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewRadiative.m; sourceTree = "<group>"; };
+		D007DC471A9B59A7004E5D50 /* M13ProgressViewRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewRing.h; sourceTree = "<group>"; };
+		D007DC481A9B59A7004E5D50 /* M13ProgressViewRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewRing.m; sourceTree = "<group>"; };
+		D007DC491A9B59A7004E5D50 /* M13ProgressViewSegmentedBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewSegmentedBar.h; sourceTree = "<group>"; };
+		D007DC4A1A9B59A7004E5D50 /* M13ProgressViewSegmentedBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewSegmentedBar.m; sourceTree = "<group>"; };
+		D007DC4B1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewSegmentedRing.h; sourceTree = "<group>"; };
+		D007DC4C1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewSegmentedRing.m; sourceTree = "<group>"; };
+		D007DC4D1A9B59A7004E5D50 /* M13ProgressViewStripedBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewStripedBar.h; sourceTree = "<group>"; };
+		D007DC4E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewStripedBar.m; sourceTree = "<group>"; };
+		D007DC501A9B59A7004E5D50 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D007DC021A9B4901004E5D50 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D007DC1B1A9B4901004E5D50 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,8 +88,8 @@
 		D007DBFC1A9B4901004E5D50 = {
 			isa = PBXGroup;
 			children = (
+				D007DC331A9B59A7004E5D50 /* Vendor */,
 				D007DC071A9B4901004E5D50 /* Watch Ring Generator */,
-				D007DC211A9B4901004E5D50 /* Watch Ring GeneratorTests */,
 				D007DC061A9B4901004E5D50 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				D007DC051A9B4901004E5D50 /* Watch Ring Generator.app */,
-				D007DC1E1A9B4901004E5D50 /* Watch Ring GeneratorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +105,7 @@
 		D007DC071A9B4901004E5D50 /* Watch Ring Generator */ = {
 			isa = PBXGroup;
 			children = (
+				D007DC2E1A9B57B4004E5D50 /* assets */,
 				D007DC0C1A9B4901004E5D50 /* AppDelegate.h */,
 				D007DC0D1A9B4901004E5D50 /* AppDelegate.m */,
 				D007DC0F1A9B4901004E5D50 /* ViewController.h */,
@@ -102,21 +127,64 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D007DC211A9B4901004E5D50 /* Watch Ring GeneratorTests */ = {
+		D007DC2E1A9B57B4004E5D50 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				D007DC241A9B4901004E5D50 /* Watch_Ring_GeneratorTests.m */,
-				D007DC221A9B4901004E5D50 /* Supporting Files */,
+				D007DC2F1A9B57B4004E5D50 /* 38mm.png */,
+				D007DC301A9B57B4004E5D50 /* 42mm.png */,
 			);
-			path = "Watch Ring GeneratorTests";
+			path = assets;
 			sourceTree = "<group>";
 		};
-		D007DC221A9B4901004E5D50 /* Supporting Files */ = {
+		D007DC331A9B59A7004E5D50 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				D007DC231A9B4901004E5D50 /* Info.plist */,
+				D007DC341A9B59A7004E5D50 /* M13ProgressSuite */,
+				D007DC4F1A9B59A7004E5D50 /* UIColor+Utilities */,
 			);
-			name = "Supporting Files";
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		D007DC341A9B59A7004E5D50 /* M13ProgressSuite */ = {
+			isa = PBXGroup;
+			children = (
+				D007DC351A9B59A7004E5D50 /* M13ProgressView.h */,
+				D007DC361A9B59A7004E5D50 /* M13ProgressView.m */,
+				D007DC371A9B59A7004E5D50 /* M13ProgressViewBar.h */,
+				D007DC381A9B59A7004E5D50 /* M13ProgressViewBar.m */,
+				D007DC391A9B59A7004E5D50 /* M13ProgressViewBorderedBar.h */,
+				D007DC3A1A9B59A7004E5D50 /* M13ProgressViewBorderedBar.m */,
+				D007DC3B1A9B59A7004E5D50 /* M13ProgressViewFilteredImage.h */,
+				D007DC3C1A9B59A7004E5D50 /* M13ProgressViewFilteredImage.m */,
+				D007DC3D1A9B59A7004E5D50 /* M13ProgressViewImage.h */,
+				D007DC3E1A9B59A7004E5D50 /* M13ProgressViewImage.m */,
+				D007DC3F1A9B59A7004E5D50 /* M13ProgressViewMetro.h */,
+				D007DC401A9B59A7004E5D50 /* M13ProgressViewMetro.m */,
+				D007DC411A9B59A7004E5D50 /* M13ProgressViewMetroDotPolygon.h */,
+				D007DC421A9B59A7004E5D50 /* M13ProgressViewMetroDotPolygon.m */,
+				D007DC431A9B59A7004E5D50 /* M13ProgressViewPie.h */,
+				D007DC441A9B59A7004E5D50 /* M13ProgressViewPie.m */,
+				D007DC451A9B59A7004E5D50 /* M13ProgressViewRadiative.h */,
+				D007DC461A9B59A7004E5D50 /* M13ProgressViewRadiative.m */,
+				D007DC471A9B59A7004E5D50 /* M13ProgressViewRing.h */,
+				D007DC481A9B59A7004E5D50 /* M13ProgressViewRing.m */,
+				D007DC491A9B59A7004E5D50 /* M13ProgressViewSegmentedBar.h */,
+				D007DC4A1A9B59A7004E5D50 /* M13ProgressViewSegmentedBar.m */,
+				D007DC4B1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.h */,
+				D007DC4C1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m */,
+				D007DC4D1A9B59A7004E5D50 /* M13ProgressViewStripedBar.h */,
+				D007DC4E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m */,
+			);
+			path = M13ProgressSuite;
+			sourceTree = "<group>";
+		};
+		D007DC4F1A9B59A7004E5D50 /* UIColor+Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D007DC501A9B59A7004E5D50 /* UIColor-Expanded.h */,
+				D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */,
+			);
+			path = "UIColor+Utilities";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,24 +207,6 @@
 			productReference = D007DC051A9B4901004E5D50 /* Watch Ring Generator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D007DC1D1A9B4901004E5D50 /* Watch Ring GeneratorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D007DC2B1A9B4901004E5D50 /* Build configuration list for PBXNativeTarget "Watch Ring GeneratorTests" */;
-			buildPhases = (
-				D007DC1A1A9B4901004E5D50 /* Sources */,
-				D007DC1B1A9B4901004E5D50 /* Frameworks */,
-				D007DC1C1A9B4901004E5D50 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D007DC201A9B4901004E5D50 /* PBXTargetDependency */,
-			);
-			name = "Watch Ring GeneratorTests";
-			productName = "Watch Ring GeneratorTests";
-			productReference = D007DC1E1A9B4901004E5D50 /* Watch Ring GeneratorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +218,6 @@
 				TargetAttributes = {
 					D007DC041A9B4901004E5D50 = {
 						CreatedOnToolsVersion = 6.2;
-					};
-					D007DC1D1A9B4901004E5D50 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = D007DC041A9B4901004E5D50;
 					};
 				};
 			};
@@ -189,7 +235,6 @@
 			projectRoot = "";
 			targets = (
 				D007DC041A9B4901004E5D50 /* Watch Ring Generator */,
-				D007DC1D1A9B4901004E5D50 /* Watch Ring GeneratorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -199,16 +244,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D007DC311A9B57B4004E5D50 /* 38mm.png in Resources */,
 				D007DC141A9B4901004E5D50 /* Main.storyboard in Resources */,
+				D007DC321A9B57B4004E5D50 /* 42mm.png in Resources */,
 				D007DC191A9B4901004E5D50 /* LaunchScreen.xib in Resources */,
 				D007DC161A9B4901004E5D50 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D007DC1C1A9B4901004E5D50 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,29 +259,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D007DC551A9B59A7004E5D50 /* M13ProgressViewFilteredImage.m in Sources */,
+				D007DC531A9B59A7004E5D50 /* M13ProgressViewBar.m in Sources */,
+				D007DC571A9B59A7004E5D50 /* M13ProgressViewMetro.m in Sources */,
+				D007DC5A1A9B59A7004E5D50 /* M13ProgressViewRadiative.m in Sources */,
 				D007DC111A9B4901004E5D50 /* ViewController.m in Sources */,
+				D007DC5D1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m in Sources */,
+				D007DC581A9B59A7004E5D50 /* M13ProgressViewMetroDotPolygon.m in Sources */,
+				D007DC5F1A9B59A7004E5D50 /* UIColor-Expanded.m in Sources */,
+				D007DC5E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m in Sources */,
+				D007DC541A9B59A7004E5D50 /* M13ProgressViewBorderedBar.m in Sources */,
+				D007DC521A9B59A7004E5D50 /* M13ProgressView.m in Sources */,
+				D007DC561A9B59A7004E5D50 /* M13ProgressViewImage.m in Sources */,
 				D007DC0E1A9B4901004E5D50 /* AppDelegate.m in Sources */,
+				D007DC591A9B59A7004E5D50 /* M13ProgressViewPie.m in Sources */,
 				D007DC0B1A9B4901004E5D50 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D007DC1A1A9B4901004E5D50 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D007DC251A9B4901004E5D50 /* Watch_Ring_GeneratorTests.m in Sources */,
+				D007DC5C1A9B59A7004E5D50 /* M13ProgressViewSegmentedBar.m in Sources */,
+				D007DC5B1A9B59A7004E5D50 /* M13ProgressViewRing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D007DC201A9B4901004E5D50 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D007DC041A9B4901004E5D50 /* Watch Ring Generator */;
-			targetProxy = D007DC1F1A9B4901004E5D50 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D007DC121A9B4901004E5D50 /* Main.storyboard */ = {
@@ -361,40 +399,6 @@
 			};
 			name = Release;
 		};
-		D007DC2C1A9B4901004E5D50 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Watch Ring GeneratorTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Watch Ring Generator.app/Watch Ring Generator";
-			};
-			name = Debug;
-		};
-		D007DC2D1A9B4901004E5D50 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Watch Ring GeneratorTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Watch Ring Generator.app/Watch Ring Generator";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -412,14 +416,6 @@
 			buildConfigurations = (
 				D007DC291A9B4901004E5D50 /* Debug */,
 				D007DC2A1A9B4901004E5D50 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		D007DC2B1A9B4901004E5D50 /* Build configuration list for PBXNativeTarget "Watch Ring GeneratorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D007DC2C1A9B4901004E5D50 /* Debug */,
-				D007DC2D1A9B4901004E5D50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
