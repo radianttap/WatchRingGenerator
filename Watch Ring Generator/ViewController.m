@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *outerForegroundButton;
 @property (weak, nonatomic) IBOutlet UITextField *outerRingSize;
 @property (weak, nonatomic) IBOutlet UITextField *outerRingWidth;
-@property (weak, nonatomic) IBOutlet UITextField *outerRingSegments;
+@property (weak, nonatomic) IBOutlet UITextField *outerRingProgress;
 @property (weak, nonatomic) IBOutlet UITextField *outerBackground;
 @property (weak, nonatomic) IBOutlet UITextField *outerForeground;
 
@@ -36,7 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *innerForegroundButton;
 @property (weak, nonatomic) IBOutlet UITextField *innerRingSize;
 @property (weak, nonatomic) IBOutlet UITextField *innerRingWidth;
-@property (weak, nonatomic) IBOutlet UITextField *innerRingSegments;
+@property (weak, nonatomic) IBOutlet UITextField *innerRingProgress;
 @property (weak, nonatomic) IBOutlet UITextField *innerBackground;
 @property (weak, nonatomic) IBOutlet UITextField *innerForeground;
 
@@ -64,7 +64,10 @@
 	[super viewDidAppear:animated];
 	
 	[self setupSizes];
-	[self setGroupProgress:.3 sessionProgress:.7];
+
+	CGFloat g = [self.outerRingProgress.text doubleValue];
+	CGFloat s = [self.innerRingProgress.text doubleValue];
+	[self setGroupProgress:g sessionProgress:s];
 }
 
 - (void)setGroupProgress:(CGFloat)groupProgress sessionProgress:(CGFloat)sessionProgress {
@@ -114,6 +117,15 @@
 		[textField isEqual:self.outerBackground]) {
 		
 		[self setupColors];
+		return YES;
+		
+	} else if ([textField isEqual:self.outerRingProgress] ||
+			   [textField isEqual:self.innerRingProgress]) {
+
+		CGFloat g = [self.outerRingProgress.text doubleValue];
+		CGFloat s = [self.innerRingProgress.text doubleValue];
+		[self setGroupProgress:g sessionProgress:s];
+
 		return YES;
 	}
 	
