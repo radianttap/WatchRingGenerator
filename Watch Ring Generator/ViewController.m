@@ -10,6 +10,7 @@
 //#import "M13ProgressViewSegmentedRing.h"
 #import "M13ProgressViewRing.h"
 #import "UIColor-Expanded.h"
+#import "NSFileManager+Utilities.h"
 @import QuartzCore;
 @import CoreGraphics;
 
@@ -153,6 +154,54 @@
 	self.watchApp.image = [UIImage imageNamed:@"paged42mm"];
 }
 
+- (IBAction)generateImages:(id)sender {
 
+	NSString *folder = [NSDocumentsFolder() stringByAppendingPathComponent:@"img/"];
+	[NSFileManager findOrCreateDirectoryPath:folder];
+	
+	CGFloat op = [self.outerRingProgress.text doubleValue];
+	CGFloat ip = [self.innerRingProgress.text doubleValue];
+	
+	void (^imagegen)(M13ProgressViewRing *, NSString *, CGSize) = ^void(M13ProgressViewRing *iv, NSString *filePath, CGSize size) {
+		UIGraphicsBeginImageContextWithOptions(size, NO, 2.0);
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		[iv.layer renderInContext:context];
+		UIImage *stepImage = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+		
+		NSData *pngData = UIImagePNGRepresentation(stepImage);
+		NSError *error = nil;
+		[pngData writeToFile:filePath options:NSDataWritingFileProtectionNone error:&error];
+		if (error) {
+			NSLog(@"Error writing to file path = %@", filePath);
+		}
+	};
+
+	//	outer ring
+	CGSize size = self.outerRing.bounds.size;
+	CGFloat i=0.0;
+	[self.outerRing setProgress:i animated:NO];
+	while (i<=1.0) {
+		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"outer%02ld.png", (long)(i*100.0)]];
+		imagegen(self.outerRing, filePath, size);
+		i += 0.01;
+		[self.outerRing setProgress:i animated:NO];
+	}
+	[self.outerRing setProgress:op animated:NO];
+
+	//	inner ring
+	size = self.innerRing.bounds.size;
+	i=0.0;
+	[self.innerRing setProgress:i animated:NO];
+	while (i<=1.0) {
+		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"inner%02ld.png", (long)(i*100.0)]];
+		imagegen(self.innerRing, filePath, size);
+		i += 0.01;
+		[self.innerRing setProgress:i animated:NO];
+	}
+	[self.innerRing setProgress:ip animated:NO];
+
+	NSLog(@"Generated images saved into: %@", folder);
+}
 
 @end

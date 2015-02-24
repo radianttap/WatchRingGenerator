@@ -27,6 +27,7 @@
 		D007DC5D1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC4C1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m */; };
 		D007DC5E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC4E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m */; };
 		D007DC5F1A9B59A7004E5D50 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */; };
+		D008C6BD1A9C8C6800E7945E /* NSFileManager+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D008C6BC1A9C8C6800E7945E /* NSFileManager+Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,8 @@
 		D007DC4E1A9B59A7004E5D50 /* M13ProgressViewStripedBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewStripedBar.m; sourceTree = "<group>"; };
 		D007DC501A9B59A7004E5D50 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
 		D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
+		D008C6BB1A9C8C6800E7945E /* NSFileManager+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Utilities.h"; sourceTree = "<group>"; };
+		D008C6BC1A9C8C6800E7945E /* NSFileManager+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,7 @@
 		D007DC331A9B59A7004E5D50 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				D008C6BA1A9C8C6800E7945E /* NSFileManager+Utilities */,
 				D007DC341A9B59A7004E5D50 /* M13ProgressSuite */,
 				D007DC4F1A9B59A7004E5D50 /* UIColor+Utilities */,
 			);
@@ -171,6 +175,15 @@
 				D007DC511A9B59A7004E5D50 /* UIColor-Expanded.m */,
 			);
 			path = "UIColor+Utilities";
+			sourceTree = "<group>";
+		};
+		D008C6BA1A9C8C6800E7945E /* NSFileManager+Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D008C6BB1A9C8C6800E7945E /* NSFileManager+Utilities.h */,
+				D008C6BC1A9C8C6800E7945E /* NSFileManager+Utilities.m */,
+			);
+			path = "NSFileManager+Utilities";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +259,7 @@
 				D007DC551A9B59A7004E5D50 /* M13ProgressViewFilteredImage.m in Sources */,
 				D007DC531A9B59A7004E5D50 /* M13ProgressViewBar.m in Sources */,
 				D007DC571A9B59A7004E5D50 /* M13ProgressViewMetro.m in Sources */,
+				D008C6BD1A9C8C6800E7945E /* NSFileManager+Utilities.m in Sources */,
 				D007DC5A1A9B59A7004E5D50 /* M13ProgressViewRadiative.m in Sources */,
 				D007DC111A9B4901004E5D50 /* ViewController.m in Sources */,
 				D007DC5D1A9B59A7004E5D50 /* M13ProgressViewSegmentedRing.m in Sources */,
