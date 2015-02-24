@@ -21,7 +21,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcN-SH-DpK">
                                 <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" image="bezel38mm" translatesAutoresizingMaskIntoConstraints="NO" id="W8i-rG-Mi4">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" image="bezel38mm" translatesAutoresizingMaskIntoConstraints="NO" id="W8i-rG-Mi4">
                                         <rect key="frame" x="50" y="50" width="236" height="270"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paged38mm" translatesAutoresizingMaskIntoConstraints="NO" id="d1P-ba-9eP">

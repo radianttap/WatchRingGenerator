@@ -114,8 +114,8 @@
 	
 	if ([textField isEqual:self.outerForeground] ||
 		[textField isEqual:self.outerBackground] ||
-		[textField isEqual:self.outerForeground] ||
-		[textField isEqual:self.outerBackground]) {
+		[textField isEqual:self.innerForeground] ||
+		[textField isEqual:self.innerBackground]) {
 		
 		[self setupColors];
 		return YES;
