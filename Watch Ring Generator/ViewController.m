@@ -162,7 +162,7 @@
 	CGFloat op = [self.outerRingProgress.text doubleValue];
 	CGFloat ip = [self.innerRingProgress.text doubleValue];
 	
-	void (^imagegen)(M13ProgressViewRing *, NSString *, CGSize) = ^void(M13ProgressViewRing *iv, NSString *filePath, CGSize size) {
+	BOOL (^imagegen)(M13ProgressViewRing *, NSString *, CGSize) = ^BOOL(M13ProgressViewRing *iv, NSString *filePath, CGSize size) {
 		UIGraphicsBeginImageContextWithOptions(size, NO, 2.0);
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		[iv.layer renderInContext:context];
@@ -174,34 +174,65 @@
 		[pngData writeToFile:filePath options:NSDataWritingFileProtectionNone error:&error];
 		if (error) {
 			NSLog(@"Error writing to file path = %@", filePath);
+			UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Oops, error" message:[error description] preferredStyle:UIAlertControllerStyleAlert];
+			[ac addAction:[UIAlertAction actionWithTitle:@"Grumpf" style:UIAlertActionStyleCancel handler:nil]];
+			[self presentViewController:ac
+							   animated:YES
+							 completion:nil];
+			return NO;
 		}
+		
+		return YES;
 	};
-
+	
+	BOOL success = YES;
+	
 	//	outer ring
 	CGSize size = self.outerRing.bounds.size;
 	CGFloat i=0.0;
 	[self.outerRing setProgress:i animated:NO];
 	while (i<=1.0) {
-		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"outer%02ld.png", (long)(i*100.0)]];
-		imagegen(self.outerRing, filePath, size);
+		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"outer-%ld-%ld-%02ld.png", (long)size.width, (long)self.outerRing.progressRingWidth, (long)(i*100.0)]];
+		success = imagegen(self.outerRing, filePath, size);
+		if (!success)
+			break;
 		i += 0.01;
 		[self.outerRing setProgress:i animated:NO];
 	}
 	[self.outerRing setProgress:op animated:NO];
 
 	//	inner ring
-	size = self.innerRing.bounds.size;
-	i=0.0;
-	[self.innerRing setProgress:i animated:NO];
-	while (i<=1.0) {
-		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"inner%02ld.png", (long)(i*100.0)]];
-		imagegen(self.innerRing, filePath, size);
-		i += 0.01;
+	if (success) {
+		size = self.innerRing.bounds.size;
+		i=0.0;
 		[self.innerRing setProgress:i animated:NO];
+		while (i<=1.0) {
+			NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"inner-%ld-%ld-%02ld.png", (long)size.width, (long)self.innerRing.progressRingWidth, (long)(i*100.0)]];
+			success = imagegen(self.innerRing, filePath, size);
+			if (!success)
+				break;
+			i += 0.01;
+			[self.innerRing setProgress:i animated:NO];
+		}
+		[self.innerRing setProgress:ip animated:NO];
 	}
-	[self.innerRing setProgress:ip animated:NO];
 
-	NSLog(@"Generated images saved into: %@", folder);
+	if (success) {
+		NSLog(@"Generated images saved into: %@", folder);
+		
+		UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"Images generated with file name format: RING_id–SIZE_in_pt–WIDTH_in_pt–COUNTER into folder:" preferredStyle:UIAlertControllerStyleAlert];
+		[ac addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+			textField.placeholder = @"Destination folder";
+			textField.text = folder;
+		}];
+		[ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+		[ac addAction:[UIAlertAction actionWithTitle:@"Copy folder" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+			[[UIPasteboard generalPasteboard] setString:folder];
+		}]];
+		[self presentViewController:ac
+						   animated:YES
+						 completion:nil];
+	}
 }
 
 @end
