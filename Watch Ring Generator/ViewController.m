@@ -157,6 +157,7 @@
 - (IBAction)generateImages:(id)sender {
 
 	NSString *folder = [NSDocumentsFolder() stringByAppendingPathComponent:@"img/"];
+	NSLog(@"Destination folder: %@", folder);
 	[NSFileManager findOrCreateDirectoryPath:folder];
 	
 	CGFloat op = [self.outerRingProgress.text doubleValue];
@@ -189,37 +190,35 @@
 	
 	//	outer ring
 	CGSize size = self.outerRing.bounds.size;
-	CGFloat i=0.0;
+	NSInteger i = 0;
 	[self.outerRing setProgress:i animated:NO];
-	while (i<=1.0) {
-		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"outer-%ld-%ld-%ld@2x.png", (long)size.width, (long)self.outerRing.progressRingWidth, (long)(i*100.0)]];
+	while (i < 100) {
+		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"outer-%ld-%ld-%ld@2x.png", (long)size.width, (long)self.outerRing.progressRingWidth, i]];
 		success = imagegen(self.outerRing, filePath, size);
 		if (!success)
 			break;
-		i += 0.01;
-		[self.outerRing setProgress:i animated:NO];
+		i++;
+		[self.outerRing setProgress:((float)i / 100.0) animated:NO];
 	}
 	[self.outerRing setProgress:op animated:NO];
-
+	
 	//	inner ring
 	if (success) {
 		size = self.innerRing.bounds.size;
-		i=0.0;
+		i = 0;
 		[self.innerRing setProgress:i animated:NO];
-		while (i<=1.0) {
-			NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"inner-%ld-%ld-%ld@2x.png", (long)size.width, (long)self.innerRing.progressRingWidth, (long)(i*100.0)]];
+		while (i < 100) {
+			NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"inner-%ld-%ld-%ld@2x.png", (long)size.width, (long)self.innerRing.progressRingWidth, i]];
 			success = imagegen(self.innerRing, filePath, size);
 			if (!success)
 				break;
-			i += 0.01;
-			[self.innerRing setProgress:i animated:NO];
+			i++;
+			[self.innerRing setProgress:((float)i / 100.0) animated:NO];
 		}
 		[self.innerRing setProgress:ip animated:NO];
 	}
 
 	if (success) {
-		NSLog(@"Generated images saved into: %@", folder);
-		
 		UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"Images generated with file name format: RING_id–SIZE_in_pt–WIDTH_in_pt–COUNTER into folder:" preferredStyle:UIAlertControllerStyleAlert];
 		[ac addTextFieldWithConfigurationHandler:^(UITextField *textField) {
 			textField.placeholder = @"Destination folder";
