@@ -27,7 +27,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paged38mm" translatesAutoresizingMaskIntoConstraints="NO" id="d1P-ba-9eP">
                                         <rect key="frame" x="100" y="100" width="136" height="170"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgP-mu-jWi" userLabel="watch">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgP-mu-jWi" userLabel="watch">
                                         <rect key="frame" x="100" y="100" width="136" height="170"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErX-Ih-Dqf" userLabel="outerring" customClass="M13ProgressViewRing">
