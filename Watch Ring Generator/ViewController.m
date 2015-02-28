@@ -14,6 +14,22 @@
 @import QuartzCore;
 @import CoreGraphics;
 
+
+
+NSString *const DefaultsKeyOuterForegroundColor				= @"DefaultsKeyOuterForegroundColor";
+NSString *const DefaultsKeyOuterBackgroundColor				= @"DefaultsKeyOuterBackgroundColor";
+NSString *const DefaultsKeyOuterSize						= @"DefaultsKeyOuterSize";
+NSString *const DefaultsKeyOuterWidth						= @"DefaultsKeyOuterWidth";
+NSString *const DefaultsKeyOuterProgress					= @"DefaultsKeyOuterProgress";
+
+NSString *const DefaultsKeyInnerForegroundColor				= @"DefaultsKeyInnerForegroundColor";
+NSString *const DefaultsKeyInnerBackgroundColor				= @"DefaultsKeyInnerBackgroundColor";
+NSString *const DefaultsKeyInnerSize						= @"DefaultsKeyInnerSize";
+NSString *const DefaultsKeyInnerWidth						= @"DefaultsKeyInnerWidth";
+NSString *const DefaultsKeyInnerProgress					= @"DefaultsKeyInnerProgress";
+
+NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
+
 @interface ViewController () < UITextFieldDelegate >
 
 @property (weak, nonatomic) IBOutlet UIButton *mm38button;
@@ -54,7 +70,36 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	//	load saved values
+	NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+	if ([def stringForKey:DefaultsKeyOuterForegroundColor])
+		self.outerForeground.text = [def stringForKey:DefaultsKeyOuterForegroundColor];
+	if ([def stringForKey:DefaultsKeyOuterBackgroundColor])
+		self.outerBackground.text = [def stringForKey:DefaultsKeyOuterBackgroundColor];
+	if ([def stringForKey:DefaultsKeyInnerForegroundColor])
+		self.innerForeground.text = [def stringForKey:DefaultsKeyInnerForegroundColor];
+	if ([def stringForKey:DefaultsKeyInnerBackgroundColor])
+		self.innerBackground.text = [def stringForKey:DefaultsKeyInnerBackgroundColor];
 
+	if ([def objectForKey:DefaultsKeyOuterSize])
+		self.outerRingSize.text = [def stringForKey:DefaultsKeyOuterSize];
+	if ([def objectForKey:DefaultsKeyOuterWidth])
+		self.outerRingWidth.text = [def stringForKey:DefaultsKeyOuterWidth];
+	if ([def objectForKey:DefaultsKeyOuterProgress])
+		self.outerRingProgress.text = [def stringForKey:DefaultsKeyOuterProgress];
+
+	if ([def objectForKey:DefaultsKeyInnerSize])
+		self.innerRingSize.text = [def stringForKey:DefaultsKeyInnerSize];
+	if ([def objectForKey:DefaultsKeyInnerWidth])
+		self.innerRingWidth.text = [def stringForKey:DefaultsKeyInnerWidth];
+	if ([def objectForKey:DefaultsKeyInnerProgress])
+		self.innerRingProgress.text = [def stringForKey:DefaultsKeyInnerProgress];
+	
+	if ([def integerForKey:DefaultsKeyWatchSize] == 42) {
+		[self switchTo42mm:nil];
+	}
+	
 	self.outerRing.showPercentage = NO;
 	self.innerRing.showPercentage = NO;
 
@@ -112,6 +157,8 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	
+	[self saveToDefaults:textField];
+	
 	if ([textField isEqual:self.outerForeground] ||
 		[textField isEqual:self.outerBackground] ||
 		[textField isEqual:self.innerForeground] ||
@@ -142,6 +189,8 @@
 
 	self.watchFace.image = [UIImage imageNamed:@"bezel38mm"];
 	self.watchApp.image = [UIImage imageNamed:@"paged38mm"];
+	
+	[[NSUserDefaults standardUserDefaults] setInteger:38 forKey:DefaultsKeyWatchSize];
 }
 
 - (IBAction)switchTo42mm:(id)sender {
@@ -152,6 +201,8 @@
 
 	self.watchFace.image = [UIImage imageNamed:@"bezel42mm"];
 	self.watchApp.image = [UIImage imageNamed:@"paged42mm"];
+
+	[[NSUserDefaults standardUserDefaults] setInteger:42 forKey:DefaultsKeyWatchSize];
 }
 
 - (IBAction)generateImages:(id)sender {
@@ -231,6 +282,34 @@
 		[self presentViewController:ac
 						   animated:YES
 						 completion:nil];
+	}
+}
+
+- (void)saveToDefaults:(UITextField *)textField {
+	
+	NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+
+	if ([textField isEqual:self.outerForeground]) {
+		[def setObject:textField.text forKey:DefaultsKeyOuterForegroundColor];
+	} else if ([textField isEqual:self.outerBackground]) {
+		[def setObject:textField.text forKey:DefaultsKeyOuterBackgroundColor];
+	} else if ([textField isEqual:self.innerForeground]) {
+		[def setObject:textField.text forKey:DefaultsKeyInnerForegroundColor];
+	} else if ([textField isEqual:self.innerBackground]) {
+		[def setObject:textField.text forKey:DefaultsKeyInnerBackgroundColor];
+
+	} else if ([textField isEqual:self.outerRingSize]) {
+		[def setObject:textField.text forKey:DefaultsKeyOuterSize];
+	} else if ([textField isEqual:self.outerRingWidth]) {
+		[def setObject:textField.text forKey:DefaultsKeyOuterWidth];
+	} else if ([textField isEqual:self.outerRingProgress]) {
+		[def setObject:textField.text forKey:DefaultsKeyOuterProgress];
+	} else if ([textField isEqual:self.innerRingSize]) {
+		[def setObject:textField.text forKey:DefaultsKeyInnerSize];
+	} else if ([textField isEqual:self.innerRingWidth]) {
+		[def setObject:textField.text forKey:DefaultsKeyInnerWidth];
+	} else if ([textField isEqual:self.innerRingProgress]) {
+		[def setObject:textField.text forKey:DefaultsKeyInnerProgress];
 	}
 }
 
