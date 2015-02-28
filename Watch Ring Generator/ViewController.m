@@ -109,7 +109,7 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	[self setupSizes];
+	[self setupSizes:nil];
 
 	CGFloat g = [self.outerRingProgress.text doubleValue];
 	CGFloat s = [self.innerRingProgress.text doubleValue];
@@ -122,7 +122,7 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 	[self.innerRing setProgress:sessionProgress animated:YES];
 }
 
-- (void)setupSizes {
+- (void)setupSizes:(void (^)())block {
 	
 	self.outerRingWidthConstraint.constant = [self.outerRingSize.text doubleValue];
 	self.innerRingWidthConstraint.constant = [self.innerRingSize.text doubleValue];
@@ -137,6 +137,9 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 		
 		[self.outerRing setNeedsDisplay];
 		[self.innerRing setNeedsDisplay];
+		
+		if (block)
+			block();
 	});
 }
 
@@ -177,11 +180,13 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 		return YES;
 	}
 	
-	[self setupSizes];
+	[self setupSizes:nil];
 	return YES;
 }
 
 - (IBAction)switchTo38mm:(id)sender {
+	
+	if (self.watchScreenWidthConstraint.constant == 134) return;
 
 	self.watchScreenWidthConstraint.constant = 134;
 	self.watchScreenHeightConstraint.constant = 168;
@@ -195,6 +200,8 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 
 - (IBAction)switchTo42mm:(id)sender {
 	
+	if (self.watchScreenWidthConstraint.constant == 154) return;
+
 	self.watchScreenWidthConstraint.constant = 154;
 	self.watchScreenHeightConstraint.constant = 193;
 	[self.view layoutIfNeeded];
@@ -310,6 +317,245 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 		[def setObject:textField.text forKey:DefaultsKeyInnerWidth];
 	} else if ([textField isEqual:self.innerRingProgress]) {
 		[def setObject:textField.text forKey:DefaultsKeyInnerProgress];
+	}
+}
+
+- (IBAction)generateXCAssets:(id)sender {
+	
+	NSString *folder = [NSDocumentsFolder() stringByAppendingPathComponent:@"Ring.xcassets/"];
+	NSLog(@"Destination folder: %@", folder);
+	[NSFileManager findOrCreateDirectoryPath:folder];
+	
+	CGFloat op = [self.outerRingProgress.text doubleValue];
+	CGFloat ip = [self.innerRingProgress.text doubleValue];
+	
+	NSInteger watchSize = [[NSUserDefaults standardUserDefaults] integerForKey:DefaultsKeyWatchSize];
+	if (watchSize == 0)
+		watchSize = 38;
+	
+	BOOL (^imagegen)(M13ProgressViewRing *, NSString *, CGSize) = ^BOOL(M13ProgressViewRing *iv, NSString *filePath, CGSize size) {
+		UIGraphicsBeginImageContextWithOptions(size, NO, 2.0);
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		[iv.layer renderInContext:context];
+		UIImage *stepImage = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+		
+		NSData *pngData = UIImagePNGRepresentation(stepImage);
+		NSError *error = nil;
+		[pngData writeToFile:filePath options:NSDataWritingFileProtectionNone error:&error];
+		if (error) {
+			NSLog(@"Error writing to file path = %@", filePath);
+			UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Oops, error" message:[error description] preferredStyle:UIAlertControllerStyleAlert];
+			[ac addAction:[UIAlertAction actionWithTitle:@"Grumpf" style:UIAlertActionStyleCancel handler:nil]];
+			[self presentViewController:ac
+							   animated:YES
+							 completion:nil];
+			return NO;
+		}
+		
+		return YES;
+	};
+	
+	//	create .xcassets for both 38mm and 42mm
+	//	adjust only the ring size by 20pt
+	
+	CGFloat outerSize38 = 0;
+	CGFloat innerSize38 = 0;
+	CGFloat outerSize42 = 0;
+	CGFloat innerSize42 = 0;
+	
+	if (watchSize == 38) {
+		outerSize38 = [self.outerRingSize.text doubleValue];
+		innerSize38 = [self.innerRingSize.text doubleValue];
+		outerSize42 = outerSize38 + 20.0;
+		innerSize42 = innerSize38 + 20.0;
+	} else {
+		outerSize42 = [self.outerRingSize.text doubleValue];
+		innerSize42 = [self.innerRingSize.text doubleValue];
+		outerSize38 = outerSize42 - 20.0;
+		innerSize38 = innerSize42 - 20.0;
+	}
+	
+	
+	//	ok, now make the images for 38mm, then for 42mm
+	
+	//	for ringSize, always use the value for the 38mm (thus making that the default size). it does not matter much, it's mainly to allow you to create multiple rings
+	void (^ringSizeProcess)(NSString *, long, long, M13ProgressViewRing *, NSString *) = ^void(NSString *oi, long ringSize, long ringWidth, M13ProgressViewRing *ring, NSString *sizeSuffix) {
+		NSString *ringSuffix = [NSString stringWithFormat:@"%@-%ld-%ld/", oi, ringSize, ringWidth];
+		NSString *ringFolder = [folder stringByAppendingPathComponent:ringSuffix];
+		NSLog(@"Ring folder: %@", ringFolder);
+		[NSFileManager findOrCreateDirectoryPath:ringFolder];
+		
+		NSInteger i = 0;
+		[ring setProgress:i animated:NO];
+		while (i < 100) {
+			NSString *oneRingFolder = [ringFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%ld-%ld-%ld.imageset/", oi, ringSize, (long)ringWidth, i]];
+			[NSFileManager findOrCreateDirectoryPath:oneRingFolder];
+			
+			NSString *filePath = [oneRingFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%ld-%ld-%ld-%@@2x.png", oi, ringSize, (long)ringWidth, i, sizeSuffix]];
+			BOOL success = imagegen(ring, filePath, ring.bounds.size);
+			if (!success)
+				break;
+			i++;
+			[ring setProgress:((float)i / 100.0) animated:NO];
+		}
+	};
+
+	//	now generate Contents.json file for both outer and inner rings
+	//	example Contents.json file
+/*
+{
+  "images" : [
+			  {
+      "idiom" : "watch",
+      "scale" : "2x"
+			  },
+			  {
+      "idiom" : "watch",
+      "screenWidth" : "{130,145}",
+      "filename" : "outer-4-0@38mm-2x.png",
+      "scale" : "2x"
+			  },
+			  {
+      "idiom" : "watch",
+      "screenWidth" : "{146,165}",
+      "filename" : "outer-4-0@42mm-2x.png",
+      "scale" : "2x"
+			  }
+			  ],
+  "info" : {
+	  "version" : 1,
+	  "author" : "xcode"
+  }
+}
+ */
+	void (^jsonProcess)(NSString *, long, long) = ^void(NSString *oi, long ringSize, long ringWidth) {
+		NSString *ringSuffix = [NSString stringWithFormat:@"%@-%ld-%ld/", oi, ringSize, ringWidth];
+		NSString *ringFolder = [folder stringByAppendingPathComponent:ringSuffix];
+		
+		NSInteger i = 0;
+		while (i < 100) {
+			NSString *oneRingFolder = [ringFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%ld-%ld-%ld.imageset/", oi, ringSize, (long)ringWidth, i]];
+			
+			NSDictionary *d = @{
+								@"info": @{
+										@"version": @(1),
+										@"author": @"xcode"
+										},
+								@"images": @[
+											@{
+												@"idiom": @"watch",
+												@"scale": @"2x",
+											},
+											@{
+												@"idiom": @"watch",
+												@"screenWidth": @"{130,145}",
+												@"filename": [NSString stringWithFormat:@"%@-%ld-%ld-%ld-%@@2x.png", oi, ringSize, (long)ringWidth, i, @"38mm"],
+												@"scale": @"2x",
+											},
+											@{
+												@"idiom": @"watch",
+												@"screenWidth": @"{146,165}",
+												@"filename": [NSString stringWithFormat:@"%@-%ld-%ld-%ld-%@@2x.png", oi, ringSize, (long)ringWidth, i, @"42mm"],
+												@"scale": @"2x",
+											}
+										]
+								};
+			NSString *filePath = [oneRingFolder stringByAppendingPathComponent:@"Contents.json"];
+			NSOutputStream *stream = [NSOutputStream outputStreamToFileAtPath:filePath append:NO];
+			[stream open];
+			[NSJSONSerialization writeJSONObject:d toStream:stream options:NSJSONWritingPrettyPrinted error:nil];
+			[stream close];
+			i++;
+		}
+	};
+	
+	
+	void (^restoreDisplay)() = ^void() {
+		//	restore progress bar values
+		
+		[self.outerRing setProgress:op animated:NO];
+		[self.innerRing setProgress:ip animated:NO];
+		
+		//	restore watch size
+		
+		if (watchSize == 38) {
+			[self switchTo38mm:nil];
+			
+			self.outerRingSize.text = [@(outerSize38) stringValue];
+			self.innerRingSize.text = [@(innerSize38) stringValue];
+			[self setupSizes:nil];
+			
+		} else {
+			//	do nothing, it's already at 42mm
+		}
+
+
+		{
+			UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:@"Generated .xcassets including both 38mm and 42mm" preferredStyle:UIAlertControllerStyleAlert];
+			[ac addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+				textField.placeholder = @"Destination folder";
+				textField.text = folder;
+			}];
+			[ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+			[ac addAction:[UIAlertAction actionWithTitle:@"Copy folder" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+				[[UIPasteboard generalPasteboard] setString:folder];
+			}]];
+			[self presentViewController:ac
+							   animated:YES
+							 completion:nil];
+		}
+	};
+	
+	
+	
+	if (watchSize != 38) {
+		[self switchTo38mm:nil];
+		
+		self.outerRingSize.text = [@(outerSize38) stringValue];
+		self.innerRingSize.text = [@(innerSize38) stringValue];
+		
+		[self setupSizes:^{
+			ringSizeProcess(@"outer", (long)outerSize38, (long)self.outerRing.progressRingWidth, self.outerRing, @"38mm");
+			ringSizeProcess(@"inner", (long)innerSize38, (long)self.innerRing.progressRingWidth, self.innerRing, @"38mm");
+			
+			{
+				[self switchTo42mm:nil];
+				
+				self.outerRingSize.text = [@(outerSize42) stringValue];
+				self.innerRingSize.text = [@(innerSize42) stringValue];
+				
+				[self setupSizes:^{
+					ringSizeProcess(@"outer", (long)outerSize38, (long)self.outerRing.progressRingWidth, self.outerRing, @"42mm");
+					ringSizeProcess(@"inner", (long)innerSize38, (long)self.innerRing.progressRingWidth, self.innerRing, @"42mm");
+
+					jsonProcess(@"outer", (long)outerSize38, (long)self.outerRing.progressRingWidth);
+					jsonProcess(@"inner", (long)innerSize38, (long)self.innerRing.progressRingWidth);
+					
+					restoreDisplay();
+				}];
+			}
+		}];
+	} else {
+		ringSizeProcess(@"outer", (long)outerSize38, (long)self.outerRing.progressRingWidth, self.outerRing, @"38mm");
+		ringSizeProcess(@"inner", (long)innerSize38, (long)self.innerRing.progressRingWidth, self.innerRing, @"38mm");
+		
+		{
+			[self switchTo42mm:nil];
+			
+			self.outerRingSize.text = [@(outerSize42) stringValue];
+			self.innerRingSize.text = [@(innerSize42) stringValue];
+			
+			[self setupSizes:^{
+				ringSizeProcess(@"outer", (long)outerSize38, (long)self.outerRing.progressRingWidth, self.outerRing, @"42mm");
+				ringSizeProcess(@"inner", (long)innerSize38, (long)self.innerRing.progressRingWidth, self.innerRing, @"42mm");
+				
+				jsonProcess(@"outer", (long)outerSize38, (long)self.outerRing.progressRingWidth);
+				jsonProcess(@"inner", (long)innerSize38, (long)self.innerRing.progressRingWidth);
+				
+				restoreDisplay();
+			}];
+		}
 	}
 }
 
