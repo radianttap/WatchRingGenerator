@@ -183,8 +183,8 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 
 - (IBAction)switchTo38mm:(id)sender {
 
-	self.watchScreenWidthConstraint.constant = 136;
-	self.watchScreenHeightConstraint.constant = 170;
+	self.watchScreenWidthConstraint.constant = 134;
+	self.watchScreenHeightConstraint.constant = 168;
 	[self.view layoutIfNeeded];
 
 	self.watchFace.image = [UIImage imageNamed:@"bezel38mm"];
@@ -195,8 +195,8 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 
 - (IBAction)switchTo42mm:(id)sender {
 	
-	self.watchScreenWidthConstraint.constant = 156;
-	self.watchScreenHeightConstraint.constant = 195;
+	self.watchScreenWidthConstraint.constant = 154;
+	self.watchScreenHeightConstraint.constant = 193;
 	[self.view layoutIfNeeded];
 
 	self.watchFace.image = [UIImage imageNamed:@"bezel42mm"];
