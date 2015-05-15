@@ -38,6 +38,9 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 @property (weak, nonatomic) IBOutlet UIImageView *watchApp;
 @property (weak, nonatomic) IBOutlet UIView *watchScreen;
 
+@property (nonatomic) NSInteger kMaxNumberOfImages;
+@property (nonatomic) NSInteger kProgressOvershoot;
+
 @property (weak, nonatomic) IBOutlet M13ProgressViewRing *innerRing;
 @property (weak, nonatomic) IBOutlet M13ProgressViewRing *outerRing;
 
@@ -102,6 +105,9 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 	
 	self.outerRing.showPercentage = NO;
 	self.innerRing.showPercentage = NO;
+	
+	self.kMaxNumberOfImages = 30;
+	self.kProgressOvershoot = 1;
 
 	[self setupColors];
 }
@@ -250,13 +256,13 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 	CGSize size = self.outerRing.bounds.size;
 	NSInteger i = 0;
 	[self.outerRing setProgress:i animated:NO];
-	while (i < 100) {
+	while (i < self.kMaxNumberOfImages + self.kProgressOvershoot) {
 		NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"outer-%ld-%ld-%ld@2x.png", (long)size.width, (long)self.outerRing.progressRingWidth, i]];
 		success = imagegen(self.outerRing, filePath, size);
 		if (!success)
 			break;
 		i++;
-		[self.outerRing setProgress:((float)i / 100.0) animated:NO];
+		[self.outerRing setProgress:((float)i / self.kMaxNumberOfImages) animated:NO];
 	}
 	[self.outerRing setProgress:op animated:NO];
 	
@@ -265,13 +271,13 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 		size = self.innerRing.bounds.size;
 		i = 0;
 		[self.innerRing setProgress:i animated:NO];
-		while (i < 100) {
+		while (i < self.kMaxNumberOfImages + self.kProgressOvershoot) {
 			NSString *filePath = [folder stringByAppendingPathComponent:[NSString stringWithFormat:@"inner-%ld-%ld-%ld@2x.png", (long)size.width, (long)self.innerRing.progressRingWidth, i]];
 			success = imagegen(self.innerRing, filePath, size);
 			if (!success)
 				break;
 			i++;
-			[self.innerRing setProgress:((float)i / 100.0) animated:NO];
+			[self.innerRing setProgress:((float)i / self.kMaxNumberOfImages) animated:NO];
 		}
 		[self.innerRing setProgress:ip animated:NO];
 	}
@@ -388,7 +394,7 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 		
 		NSInteger i = 0;
 		[ring setProgress:i animated:NO];
-		while (i < 100) {
+		while (i < self.kMaxNumberOfImages + self.kProgressOvershoot) {
 			NSString *oneRingFolder = [ringFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%ld-%ld-%ld.imageset/", oi, ringSize, (long)ringWidth, i]];
 			[NSFileManager findOrCreateDirectoryPath:oneRingFolder];
 			
@@ -397,7 +403,7 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 			if (!success)
 				break;
 			i++;
-			[ring setProgress:((float)i / 100.0) animated:NO];
+			[ring setProgress:((float)i / self.kMaxNumberOfImages) animated:NO];
 		}
 	};
 
@@ -434,7 +440,7 @@ NSString *const DefaultsKeyWatchSize						= @"DefaultsKeyWatchSize";
 		NSString *ringFolder = [folder stringByAppendingPathComponent:ringSuffix];
 		
 		NSInteger i = 0;
-		while (i < 100) {
+		while (i < self.kMaxNumberOfImages + self.kProgressOvershoot) {
 			NSString *oneRingFolder = [ringFolder stringByAppendingPathComponent:[NSString stringWithFormat:@"%@-%ld-%ld-%ld.imageset/", oi, ringSize, (long)ringWidth, i]];
 			
 			NSDictionary *d = @{
