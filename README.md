@@ -1,5 +1,6 @@
-> Note: This is an old thing made as quickie tool in WatchKit 1.0 days.
-> Use it if you still find use for it, but it's abandoned (by me).
+---
+> Note: this is abandoned. I don't recommend to use it in new projects.
+---
 
 
 # WatchRingGenerator 1.1
