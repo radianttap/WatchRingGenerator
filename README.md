@@ -1,3 +1,7 @@
+> Note: This is an old thing made as quickie tool in WatchKit 1.0 days.
+> Use it if you still find use for it, but it's abandoned (by me).
+
+
 # WatchRingGenerator 1.1
 
 iOS app to generate series of PNG images, to be used in WatchKit apps. It’s primarily made to be used in iOS Simulator, so you can easily get to the pics.
